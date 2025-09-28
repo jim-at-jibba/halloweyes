@@ -1,8 +1,4 @@
-# video-list Specification
-
-## Purpose
-TBD - created by archiving change create-video-list-screen. Update Purpose after archive.
-## Requirements
+## MODIFIED Requirements
 ### Requirement: Video List Display
 The app SHALL display a list of available videos on the main index screen.
 
@@ -31,6 +27,7 @@ The app SHALL have a reusable component for displaying individual video items.
 - **THEN** each video item responds to tap gestures
 - **AND** tapping triggers navigation to video player
 
+## ADDED Requirements
 ### Requirement: Credits Modal
 The app SHALL provide a credits modal that displays attribution information.
 
@@ -55,4 +52,3 @@ The app SHALL display an information icon in the video list screen header.
 - **THEN** an information icon is visible in the header
 - **AND** the icon responds to tap gestures
 - **AND** tapping the icon opens the credits modal
-
