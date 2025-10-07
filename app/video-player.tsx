@@ -1,24 +1,52 @@
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
 
 import { ThemedText } from '@/components/themed-text';
 import { videos } from '@/constants/videos';
 import { useOrientation } from '@/hooks/use-orientation';
 
 export default function VideoPlayerScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, mode } = useLocalSearchParams<{ id?: string; mode?: string }>();
   const router = useRouter();
   const orientation = useOrientation();
+  const isRandomMode = mode === 'random';
   
-  const video = videos.find(v => v.id === id);
+  const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
+  
+  const video = videos.find(v => v.id === (currentVideoId || id));
   
   const player = useVideoPlayer(video ? video.path : null, player => {
     if (player) {
-      player.loop = true;
+      player.loop = !isRandomMode;
       player.play();
     }
   });
+  
+  useEffect(() => {
+    if (isRandomMode && !currentVideoId && !id) {
+      const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+      setCurrentVideoId(randomVideo.id);
+    }
+  }, [isRandomMode, currentVideoId, id]);
+  
+  useEffect(() => {
+    if (isRandomMode && player) {
+      const handleEnd = () => {
+        let nextVideo;
+        do {
+          nextVideo = videos[Math.floor(Math.random() * videos.length)];
+        } while (nextVideo.id === currentVideoId && videos.length > 1);
+        setCurrentVideoId(nextVideo.id);
+      };
+      
+      player.addListener('playToEnd', handleEnd);
+      return () => {
+        player.removeListener('playToEnd', handleEnd);
+      };
+    }
+  }, [isRandomMode, player, currentVideoId]);
 
   if (!video) {
     return (
