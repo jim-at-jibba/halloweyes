@@ -1,16 +1,14 @@
-import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Info, Shuffle } from "lucide-react-native";
+import { Info, Film, Circle } from "lucide-react-native";
 import { useState } from "react";
 
 import { ThemedText } from "@/components/themed-text";
-import { VideoListItem } from "@/components/video-list-item";
 import { CreditsModal } from "@/components/credits-modal";
-import { videos } from "@/constants/videos";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { useRouter } from "expo-router";
 
-export default function IndexScreen() {
+export default function HomeScreen() {
   const backgroundColor = useThemeColor({}, "background");
   const textColor = useThemeColor({}, "text");
   const [modalVisible, setModalVisible] = useState(false);
@@ -27,20 +25,38 @@ export default function IndexScreen() {
           <Info size={24} color={textColor} />
         </TouchableOpacity>
       </View>
-      <FlatList
-        data={videos}
-        renderItem={({ item }) => <VideoListItem video={item} />}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.list}
-      />
-      <View style={styles.footer}>
+      <View style={styles.content}>
         <TouchableOpacity
-          style={[styles.randomButton, { borderColor: textColor }]}
-          onPress={() => router.push("/video-player?mode=random")}
+          style={[styles.navButton, { borderColor: textColor }]}
+          onPress={() => router.push("/videos")}
         >
-          <Shuffle size={20} color={textColor} />
-          <ThemedText style={[styles.randomButtonText, { color: textColor }]}>
-            Random
+          <Film size={32} color={textColor} />
+          <ThemedText style={[styles.navButtonText, { color: textColor }]}>
+            Videos
+          </ThemedText>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.navButton, styles.disabledButton, { borderColor: textColor, opacity: 0.5 }]}
+          disabled
+        >
+          <Circle size={32} color={textColor} />
+          <ThemedText style={[styles.navButtonText, { color: textColor }]}>
+            Section 2
+          </ThemedText>
+          <ThemedText style={[styles.comingSoonText, { color: textColor }]}>
+            Coming Soon
+          </ThemedText>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.navButton, styles.disabledButton, { borderColor: textColor, opacity: 0.5 }]}
+          disabled
+        >
+          <Circle size={32} color={textColor} />
+          <ThemedText style={[styles.navButtonText, { color: textColor }]}>
+            Section 3
+          </ThemedText>
+          <ThemedText style={[styles.comingSoonText, { color: textColor }]}>
+            Coming Soon
           </ThemedText>
         </TouchableOpacity>
       </View>
@@ -63,30 +79,32 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  list: {
-    paddingVertical: 8,
-  },
-  footer: {
+  content: {
+    flex: 1,
     padding: 16,
-    borderTopWidth: 1,
-    alignItems: "center",
+    gap: 16,
+    justifyContent: "center",
   },
-  randomButton: {
-    flexDirection: "row",
+  navButton: {
+    borderWidth: 2,
+    borderRadius: 12,
+    padding: 24,
     alignItems: "center",
     gap: 8,
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
   },
-  randomButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
+  disabledButton: {
+    position: "relative",
+  },
+  navButtonText: {
+    fontSize: 20,
+    fontWeight: "700",
+  },
+  comingSoonText: {
+    fontSize: 12,
+    fontStyle: "italic",
   },
   infoButton: {
     padding: 12,
     margin: -4,
   },
 });
-

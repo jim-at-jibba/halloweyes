@@ -20,6 +20,9 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="videos" options={{ headerShown: false }} />
+        <Stack.Screen name="section-2" options={{ headerShown: false }} />
+        <Stack.Screen name="section-3" options={{ headerShown: false }} />
         <Stack.Screen name="video-player" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
