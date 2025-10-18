@@ -4,6 +4,12 @@ export interface SoundEffect {
   file: any;
 }
 
+export interface AmbientSound {
+  id: string;
+  name: string;
+  file: any;
+}
+
 export const soundEffects: SoundEffect[] = [
   {
     id: "bats",
@@ -69,5 +75,78 @@ export const soundEffects: SoundEffect[] = [
     id: "wolf",
     name: "Wolf",
     file: require("@/assets/sounds/effects/Wolf 1.mp3"),
+  },
+];
+
+export const ambientSounds: AmbientSound[] = [
+  {
+    id: "cemetery-v2",
+    name: "Cemetery v2",
+    file: require("@/assets/sounds/ambient/Cemetery Amb v2.mp3"),
+  },
+  {
+    id: "cemetery",
+    name: "Cemetery",
+    file: require("@/assets/sounds/ambient/Cemetery Amb.mp3"),
+  },
+  {
+    id: "cemetery-instrumental",
+    name: "Cemetery Instrumental",
+    file: require("@/assets/sounds/ambient/Cemetery Instrumental Amb.mp3"),
+  },
+  {
+    id: "dark-castle-v2",
+    name: "Dark Castle v2",
+    file: require("@/assets/sounds/ambient/Dark Castle Amb v2.mp3"),
+  },
+  {
+    id: "dark-castle",
+    name: "Dark Castle",
+    file: require("@/assets/sounds/ambient/Dark Castle Amb.mp3"),
+  },
+  {
+    id: "dark-castle-instrumental",
+    name: "Dark Castle Instrumental",
+    file: require("@/assets/sounds/ambient/Dark Castle Instrumental Amb.mp3"),
+  },
+  {
+    id: "fireplace",
+    name: "Fireplace",
+    file: require("@/assets/sounds/ambient/Fireplace.mp3"),
+  },
+  {
+    id: "forest",
+    name: "Forest",
+    file: require("@/assets/sounds/ambient/Forest.mp3"),
+  },
+  {
+    id: "haunted-hospital",
+    name: "Haunted Hospital",
+    file: require("@/assets/sounds/ambient/Haunted Hospital.mp3"),
+  },
+  {
+    id: "mansion-v2",
+    name: "Mansion v2",
+    file: require("@/assets/sounds/ambient/Mansion Amb v2.mp3"),
+  },
+  {
+    id: "mansion",
+    name: "Mansion",
+    file: require("@/assets/sounds/ambient/Mansion Amb.mp3"),
+  },
+  {
+    id: "mansion-instrumental",
+    name: "Mansion Instrumental",
+    file: require("@/assets/sounds/ambient/Mansion Instrumental Amb.mp3"),
+  },
+  {
+    id: "rain",
+    name: "Rain",
+    file: require("@/assets/sounds/ambient/Rain.mp3"),
+  },
+  {
+    id: "wind",
+    name: "Wind",
+    file: require("@/assets/sounds/ambient/Wind.mp3"),
   },
 ];
