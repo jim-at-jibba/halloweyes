@@ -1,6 +1,6 @@
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Info, Film, Circle } from "lucide-react-native";
+import { Info, Film, Circle, Volume2 } from "lucide-react-native";
 import { useState } from "react";
 
 import { ThemedText } from "@/components/themed-text";
@@ -36,15 +36,12 @@ export default function HomeScreen() {
           </ThemedText>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.navButton, styles.disabledButton, { borderColor: textColor, opacity: 0.5 }]}
-          disabled
+          style={[styles.navButton, { borderColor: textColor }]}
+          onPress={() => router.push("/soundboard")}
         >
-          <Circle size={32} color={textColor} />
+          <Volume2 size={32} color={textColor} />
           <ThemedText style={[styles.navButtonText, { color: textColor }]}>
-            Section 2
-          </ThemedText>
-          <ThemedText style={[styles.comingSoonText, { color: textColor }]}>
-            Coming Soon
+            Soundboard
           </ThemedText>
         </TouchableOpacity>
         <TouchableOpacity
