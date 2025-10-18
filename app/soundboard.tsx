@@ -1,8 +1,9 @@
 import { StyleSheet, View, ScrollView, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Volume2, VolumeX } from "lucide-react-native";
+import { Volume2, VolumeX, ArrowLeft } from "lucide-react-native";
 import { useState, useEffect, useRef } from "react";
 import { useAudioPlayer, setAudioModeAsync, AudioPlayer } from "expo-audio";
+import { useRouter } from "expo-router";
 
 import { ThemedText } from "@/components/themed-text";
 import { useThemeColor } from "@/hooks/use-theme-color";
@@ -11,6 +12,7 @@ import { soundEffects, ambientSounds } from "@/constants/sounds";
 export default function SoundboardScreen() {
   const backgroundColor = useThemeColor({}, "background");
   const textColor = useThemeColor({}, "text");
+  const router = useRouter();
   const backgroundPlayer = useAudioPlayer(null);
   const [playingBackground, setPlayingBackground] = useState<string | null>(
     null
@@ -75,7 +77,14 @@ export default function SoundboardScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor }]}>
       <View style={styles.header}>
+        <TouchableOpacity 
+          style={styles.backButton} 
+          onPress={() => router.back()}
+        >
+          <ArrowLeft size={24} color={textColor} />
+        </TouchableOpacity>
         <ThemedText type="spooky">Soundboard</ThemedText>
+        <View style={styles.backButton} />
       </View>
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.section}>
@@ -189,7 +198,12 @@ const styles = StyleSheet.create({
   header: {
     padding: 16,
     borderBottomWidth: 2,
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
+  },
+  backButton: {
+    width: 24,
   },
   content: {
     padding: 16,

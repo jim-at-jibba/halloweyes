@@ -1,6 +1,6 @@
 import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Shuffle } from "lucide-react-native";
+import { Shuffle, ArrowLeft } from "lucide-react-native";
 
 import { ThemedText } from "@/components/themed-text";
 import { VideoListItem } from "@/components/video-list-item";
@@ -16,7 +16,14 @@ export default function VideosScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor }]}>
       <View style={styles.header}>
+        <TouchableOpacity 
+          style={styles.backButton} 
+          onPress={() => router.back()}
+        >
+          <ArrowLeft size={24} color={textColor} />
+        </TouchableOpacity>
         <ThemedText type="spooky">Videos</ThemedText>
+        <View style={styles.backButton} />
       </View>
       <FlatList
         data={videos}
@@ -46,7 +53,12 @@ const styles = StyleSheet.create({
   header: {
     padding: 16,
     borderBottomWidth: 2,
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
+  },
+  backButton: {
+    width: 24,
   },
   list: {
     paddingVertical: 8,

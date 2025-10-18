@@ -1,6 +1,6 @@
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Info, Film, Circle, Volume2 } from "lucide-react-native";
+import { Info, Film, Volume2 } from "lucide-react-native";
 import { useState } from "react";
 
 import { ThemedText } from "@/components/themed-text";
@@ -44,18 +44,6 @@ export default function HomeScreen() {
             Soundboard
           </ThemedText>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.navButton, styles.disabledButton, { borderColor: textColor, opacity: 0.5 }]}
-          disabled
-        >
-          <Circle size={32} color={textColor} />
-          <ThemedText style={[styles.navButtonText, { color: textColor }]}>
-            Section 3
-          </ThemedText>
-          <ThemedText style={[styles.comingSoonText, { color: textColor }]}>
-            Coming Soon
-          </ThemedText>
-        </TouchableOpacity>
       </View>
       <CreditsModal
         visible={modalVisible}
@@ -89,16 +77,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 8,
   },
-  disabledButton: {
-    position: "relative",
-  },
   navButtonText: {
     fontSize: 20,
     fontWeight: "700",
-  },
-  comingSoonText: {
-    fontSize: 12,
-    fontStyle: "italic",
   },
   infoButton: {
     padding: 12,
