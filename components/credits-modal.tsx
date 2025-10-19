@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity, Modal } from "react-native";
+import { StyleSheet, View, Pressable, Modal } from "react-native";
 import { Info } from "lucide-react-native";
 import { ThemedText } from "@/components/themed-text";
 import { ExternalLink } from "@/components/external-link";
@@ -56,9 +56,9 @@ export function CreditsModal({ visible, onClose }: CreditsModalProps) {
             </ThemedText>
           </View>
 
-          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+          <Pressable onPress={onClose} style={styles.closeButton}>
             <ThemedText style={styles.closeButtonText}>Close</ThemedText>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     </Modal>

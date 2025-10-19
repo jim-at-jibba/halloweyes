@@ -1,4 +1,4 @@
-import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
+import { StyleSheet, View, FlatList, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Shuffle, ArrowLeft, Info } from "lucide-react-native";
 
@@ -19,20 +19,20 @@ export default function VideosScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor }]}>
       <View style={styles.header}>
-        <TouchableOpacity
+        <Pressable
           style={styles.backButton}
           onPress={() => router.back()}
         >
           <ArrowLeft size={24} color={textColor} />
-        </TouchableOpacity>
+        </Pressable>
         <ThemedText type="spooky">Spooky eyes</ThemedText>
         <View style={styles.backButton}>
-          <TouchableOpacity
+          <Pressable
             onPress={() => setModalVisible(true)}
             style={styles.infoButton}
           >
             <Info size={24} color={textColor} />
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
       <FlatList
@@ -42,7 +42,7 @@ export default function VideosScreen() {
         contentContainerStyle={styles.list}
       />
       <View style={styles.footer}>
-        <TouchableOpacity
+        <Pressable
           style={[styles.randomButton, { borderColor: textColor }]}
           onPress={() => router.push("/video-player?mode=random")}
         >
@@ -50,7 +50,7 @@ export default function VideosScreen() {
           <ThemedText style={[styles.randomButtonText, { color: textColor }]}>
             Random
           </ThemedText>
-        </TouchableOpacity>
+        </Pressable>
       </View>
       <CreditsModal
         visible={modalVisible}

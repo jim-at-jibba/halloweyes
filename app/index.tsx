@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Film, Volume2 } from "lucide-react-native";
 
@@ -17,7 +17,7 @@ export default function HomeScreen() {
         <ThemedText type="spooky">🎃 HallowEyes 👻</ThemedText>
       </View>
       <View style={styles.content}>
-        <TouchableOpacity
+        <Pressable
           style={[styles.navButton, { borderColor: textColor }]}
           onPress={() => router.push("/videos")}
         >
@@ -25,8 +25,8 @@ export default function HomeScreen() {
           <ThemedText style={[styles.navButtonText, { color: textColor }]}>
             Spooky Eyes
           </ThemedText>
-        </TouchableOpacity>
-        <TouchableOpacity
+        </Pressable>
+        <Pressable
           style={[styles.navButton, { borderColor: textColor }]}
           onPress={() => router.push("/soundboard")}
         >
@@ -34,7 +34,7 @@ export default function HomeScreen() {
           <ThemedText style={[styles.navButtonText, { color: textColor }]}>
             Soundboard
           </ThemedText>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </SafeAreaView>
   );

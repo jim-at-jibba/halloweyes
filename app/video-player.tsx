@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Pressable } from 'react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -68,12 +68,12 @@ export default function VideoPlayerScreen() {
         nativeControls
       />
       {orientation === 'portrait' && (
-        <TouchableOpacity 
+        <Pressable 
           style={styles.backButton} 
           onPress={() => router.back()}
         >
           <ThemedText style={styles.backText}>← Back</ThemedText>
-        </TouchableOpacity>
+        </Pressable>
       )}
     </View>
   );

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
 
 import { ThemedText } from '@/components/themed-text';
@@ -23,7 +23,7 @@ export function VideoListItem({ video }: VideoListItemProps) {
   };
 
   return (
-    <TouchableOpacity 
+    <Pressable 
       style={[styles.container, { backgroundColor, borderColor }]} 
       onPress={handlePress}
     >
@@ -37,7 +37,7 @@ export function VideoListItem({ video }: VideoListItemProps) {
           {video.title}
         </ThemedText>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 

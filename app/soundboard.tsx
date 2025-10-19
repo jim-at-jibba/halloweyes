@@ -1,4 +1,4 @@
-import { StyleSheet, View, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, View, ScrollView, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Volume2, VolumeX, ArrowLeft } from "lucide-react-native";
 import { useState, useEffect, useRef } from "react";
@@ -77,12 +77,12 @@ export default function SoundboardScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor }]}>
       <View style={styles.header}>
-        <TouchableOpacity 
+        <Pressable 
           style={styles.backButton} 
           onPress={() => router.back()}
         >
           <ArrowLeft size={24} color={textColor} />
-        </TouchableOpacity>
+        </Pressable>
         <ThemedText type="spooky">Soundboard</ThemedText>
         <View style={styles.backButton} />
       </View>
@@ -94,7 +94,7 @@ export default function SoundboardScreen() {
               const isPlaying = playingEffects[effect.id] || false;
 
               return (
-                <TouchableOpacity
+                <Pressable
                   key={effect.id}
                   style={[
                     styles.soundButton,
@@ -126,7 +126,7 @@ export default function SoundboardScreen() {
                   >
                     {effect.name}
                   </ThemedText>
-                </TouchableOpacity>
+                </Pressable>
               );
             })}
           </View>
@@ -136,7 +136,7 @@ export default function SoundboardScreen() {
           <ThemedText style={styles.sectionTitle}>Background</ThemedText>
           <View style={styles.grid}>
             {ambientSounds.map((ambient) => (
-              <TouchableOpacity
+              <Pressable
                 key={ambient.id}
                 style={[
                   styles.soundButton,
@@ -182,7 +182,7 @@ export default function SoundboardScreen() {
                 >
                   {ambient.name}
                 </ThemedText>
-              </TouchableOpacity>
+              </Pressable>
             ))}
           </View>
         </View>
