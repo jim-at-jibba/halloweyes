@@ -56,7 +56,13 @@ export function CreditsModal({ visible, onClose }: CreditsModalProps) {
             </ThemedText>
           </View>
 
-          <Pressable onPress={onClose} style={styles.closeButton}>
+          <Pressable
+            onPress={onClose}
+            style={({ pressed }) => [
+              styles.closeButton,
+              { opacity: pressed ? 0.6 : 1 },
+            ]}
+          >
             <ThemedText style={styles.closeButtonText}>Close</ThemedText>
           </Pressable>
         </View>

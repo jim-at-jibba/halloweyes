@@ -14,7 +14,10 @@ export function Collapsible({ children, title }: PropsWithChildren & { title: st
   return (
     <ThemedView>
       <Pressable
-        style={styles.heading}
+        style={({ pressed }) => [
+          styles.heading,
+          { opacity: pressed ? 0.6 : 1 },
+        ]}
         onPress={() => setIsOpen((value) => !value)}>
         <IconSymbol
           name="chevron.right"

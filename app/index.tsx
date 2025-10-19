@@ -18,7 +18,10 @@ export default function HomeScreen() {
       </View>
       <View style={styles.content}>
         <Pressable
-          style={[styles.navButton, { borderColor: textColor }]}
+          style={({ pressed }) => [
+            styles.navButton,
+            { borderColor: textColor, opacity: pressed ? 0.6 : 1 },
+          ]}
           onPress={() => router.push("/videos")}
         >
           <Film size={32} color={textColor} />
@@ -27,7 +30,10 @@ export default function HomeScreen() {
           </ThemedText>
         </Pressable>
         <Pressable
-          style={[styles.navButton, { borderColor: textColor }]}
+          style={({ pressed }) => [
+            styles.navButton,
+            { borderColor: textColor, opacity: pressed ? 0.6 : 1 },
+          ]}
           onPress={() => router.push("/soundboard")}
         >
           <Volume2 size={32} color={textColor} />

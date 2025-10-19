@@ -78,7 +78,10 @@ export default function SoundboardScreen() {
     <SafeAreaView style={[styles.container, { backgroundColor }]}>
       <View style={styles.header}>
         <Pressable 
-          style={styles.backButton} 
+          style={({ pressed }) => [
+            styles.backButton,
+            { opacity: pressed ? 0.6 : 1 },
+          ]}
           onPress={() => router.back()}
         >
           <ArrowLeft size={24} color={textColor} />
@@ -96,11 +99,12 @@ export default function SoundboardScreen() {
               return (
                 <Pressable
                   key={effect.id}
-                  style={[
+                  style={({ pressed }) => [
                     styles.soundButton,
                     {
                       borderColor: textColor,
                       backgroundColor: isPlaying ? textColor : "transparent",
+                      opacity: pressed ? 0.6 : 1,
                     },
                   ]}
                   onPress={() => toggleEffect(effect.id, effect.file)}
@@ -138,7 +142,7 @@ export default function SoundboardScreen() {
             {ambientSounds.map((ambient) => (
               <Pressable
                 key={ambient.id}
-                style={[
+                style={({ pressed }) => [
                   styles.soundButton,
                   {
                     borderColor: textColor,
@@ -146,6 +150,7 @@ export default function SoundboardScreen() {
                       playingBackground === ambient.id
                         ? textColor
                         : "transparent",
+                    opacity: pressed ? 0.6 : 1,
                   },
                 ]}
                 onPress={() => toggleBackgroundSound(ambient.id, ambient.file)}

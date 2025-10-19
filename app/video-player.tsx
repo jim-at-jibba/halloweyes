@@ -69,7 +69,10 @@ export default function VideoPlayerScreen() {
       />
       {orientation === 'portrait' && (
         <Pressable 
-          style={styles.backButton} 
+          style={({ pressed }) => [
+            styles.backButton,
+            { opacity: pressed ? 0.6 : 1 },
+          ]}
           onPress={() => router.back()}
         >
           <ThemedText style={styles.backText}>← Back</ThemedText>

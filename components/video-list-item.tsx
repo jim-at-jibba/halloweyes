@@ -24,7 +24,10 @@ export function VideoListItem({ video }: VideoListItemProps) {
 
   return (
     <Pressable 
-      style={[styles.container, { backgroundColor, borderColor }]} 
+      style={({ pressed }) => [
+        styles.container,
+        { backgroundColor, borderColor, opacity: pressed ? 0.6 : 1 },
+      ]}
       onPress={handlePress}
     >
       <Image 

@@ -20,7 +20,10 @@ export default function VideosScreen() {
     <SafeAreaView style={[styles.container, { backgroundColor }]}>
       <View style={styles.header}>
         <Pressable
-          style={styles.backButton}
+          style={({ pressed }) => [
+            styles.backButton,
+            { opacity: pressed ? 0.6 : 1 },
+          ]}
           onPress={() => router.back()}
         >
           <ArrowLeft size={24} color={textColor} />
@@ -29,7 +32,10 @@ export default function VideosScreen() {
         <View style={styles.backButton}>
           <Pressable
             onPress={() => setModalVisible(true)}
-            style={styles.infoButton}
+            style={({ pressed }) => [
+              styles.infoButton,
+              { opacity: pressed ? 0.6 : 1 },
+            ]}
           >
             <Info size={24} color={textColor} />
           </Pressable>
@@ -43,7 +49,10 @@ export default function VideosScreen() {
       />
       <View style={styles.footer}>
         <Pressable
-          style={[styles.randomButton, { borderColor: textColor }]}
+          style={({ pressed }) => [
+            styles.randomButton,
+            { borderColor: textColor, opacity: pressed ? 0.6 : 1 },
+          ]}
           onPress={() => router.push("/video-player?mode=random")}
         >
           <Shuffle size={20} color={textColor} />
