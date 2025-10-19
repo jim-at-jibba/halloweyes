@@ -1,29 +1,39 @@
 import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Shuffle, ArrowLeft } from "lucide-react-native";
+import { Shuffle, ArrowLeft, Info } from "lucide-react-native";
 
 import { ThemedText } from "@/components/themed-text";
 import { VideoListItem } from "@/components/video-list-item";
 import { videos } from "@/constants/videos";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { useRouter } from "expo-router";
+import { useState } from "react";
+import { CreditsModal } from "@/components/credits-modal";
 
 export default function VideosScreen() {
   const backgroundColor = useThemeColor({}, "background");
   const textColor = useThemeColor({}, "text");
   const router = useRouter();
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor }]}>
       <View style={styles.header}>
-        <TouchableOpacity 
-          style={styles.backButton} 
+        <TouchableOpacity
+          style={styles.backButton}
           onPress={() => router.back()}
         >
           <ArrowLeft size={24} color={textColor} />
         </TouchableOpacity>
-        <ThemedText type="spooky">Videos</ThemedText>
-        <View style={styles.backButton} />
+        <ThemedText type="spooky">Spooky eyes</ThemedText>
+        <View style={styles.backButton}>
+          <TouchableOpacity
+            onPress={() => setModalVisible(true)}
+            style={styles.infoButton}
+          >
+            <Info size={24} color={textColor} />
+          </TouchableOpacity>
+        </View>
       </View>
       <FlatList
         data={videos}
@@ -42,6 +52,10 @@ export default function VideosScreen() {
           </ThemedText>
         </TouchableOpacity>
       </View>
+      <CreditsModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+      />
     </SafeAreaView>
   );
 }
@@ -80,5 +94,9 @@ const styles = StyleSheet.create({
   randomButtonText: {
     fontSize: 16,
     fontWeight: "600",
+  },
+  infoButton: {
+    padding: 12,
+    margin: -4,
   },
 });
